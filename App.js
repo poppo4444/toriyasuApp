@@ -5,25 +5,37 @@ import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.appBar}>
-        <View style={styles.appBarInner}>
-          <Text style={styles.appBarCenter}>注文画面</Text>
-          <StatusBar style="light" />
-        </View>
-      </View>
-      <View style={styles.menu}>
-        <View style={styles.items}>
-          <Image style={styles.itemImage} source={require('./reactlogo.png')}></Image>
-          <View style={styles.itemRight}>
-            <Text style={styles.itemText}>もも肉</Text>
-            <Text style={styles.itemText}>100円</Text>
-            <Text style={styles.itemText}>個数</Text>
-          </View>
-        </View>
-      </View>
+      <AppBar />
+      <Menu />
       <StatusBar style="light" />
     </SafeAreaView>
   );
+}
+
+function AppBar(){
+  return(
+    <View style={styles.appBar}>
+      <View style={styles.appBarInner}>
+        <Text style={styles.appBarCenter}>注文画面</Text>
+        <StatusBar style="light" />
+      </View>
+    </View>
+  )
+}
+
+function Menu(){
+  return(
+    <View style={styles.menu}>
+      <View style={styles.items}>
+        <Image style={styles.itemImage} source={require('./reactlogo.png')}></Image>
+        <View style={styles.itemRight}>
+          <Text style={styles.itemText}>もも肉</Text>
+          <Text style={styles.itemText}>100円</Text>
+          <Text style={styles.itemText}>個数</Text>
+        </View>
+      </View>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
