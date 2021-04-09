@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 
 export default function App() {
   return (
@@ -11,32 +11,24 @@ export default function App() {
           <StatusBar style="light" />
         </View>
       </View>
-      <View style={styles.header}>
-        <Text style={styles.header}>もも肉</Text>
-        <StatusBar style="light" />
+      <View style={styles.menu}>
+        <View style={styles.items}>
+          <Image style={styles.itemImage} source={require('./reactlogo.png')}></Image>
+          <View style={styles.itemRight}>
+            <Text style={styles.itemText}>もも肉</Text>
+            <Text style={styles.itemText}>100円</Text>
+            <Text style={styles.itemText}>個数</Text>
+          </View>
+        </View>
       </View>
-      <View style={styles.header}>
-        <Text style={styles.header}>もも肉</Text>
-        <StatusBar style="light" />
-      </View>
-      <View style={styles.header}>
-        <Text style={styles.header}>せせり</Text>
-        <StatusBar style="light" />
-      </View>
-      <View style={styles.header}>
-        <Text style={styles.header}>ねぎま</Text>
-        <StatusBar style="light" />
-      </View>
+      <StatusBar style="light" />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 30,
-  },
   appBar: {
-    width : '100%',
+    width: '100%',
     height: 100,
     backgroundColor: '#467FD3',
     justifyContent: 'flex-end',
@@ -52,10 +44,31 @@ const styles = StyleSheet.create({
     color: '#ffffff'
   },
   container: {
-    flex: 1,
     backgroundColor: '#fff',
+  },
+  menu:{
+    height: 200,
+    width: '100%',
+  },
+  items:{
+    width: '100%',
+    height: 150,
+    flexDirection: 'row',
+  },
+  itemImage: {
+    flex: 1,
+    height: 150,
+    width: 150,
+    justifyContent: 'flex-start',
+  },
+  itemRight: {
+    flex: 2,
+    backgroundColor: 'red',
+  },
+  itemText: {
+    flex: 1,
+    fontSize: 22,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   safeArea: {
     flex: 1,
@@ -65,10 +78,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 10,
   },
-  header: {
-    flex: 1,
-    fontSize: 22,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-  }
+
 });
