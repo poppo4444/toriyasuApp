@@ -25,12 +25,19 @@ function AppBar(){
 }
 
 function Menu(){
-  const [count, setCount] = useState(0)
-
   return(
     <View style={styles.menu}>
       <View style={styles.items}>
         <Image style={styles.itemImage} source={require('./reactlogo.png')}></Image>
+        <Item></Item>
+      </View>
+    </View>
+  )
+}
+
+function Item(){
+  const [count, setCount] = useState(0)
+
         <View style={styles.itemRight}>
           <Text style={styles.itemText}>もも肉</Text>
           <Text style={styles.itemText}>100円</Text>
