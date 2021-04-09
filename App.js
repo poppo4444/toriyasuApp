@@ -34,8 +34,8 @@ function Menu(){
         <View style={styles.itemRight}>
           <Text style={styles.itemText}>もも肉</Text>
           <Text style={styles.itemText}>100円</Text>
-          <Text style={styles.itemText}>個数</Text>
-          <Text style={styles.itemText}>{count}</Text>
+          <Text style={styles.itemText}>個数: {count}個</Text>
+          <Text style={styles.itemText}>金額: {count * 100}円</Text>
           <View style={styles.button}>
             <TouchableOpacity onPress={ () => setCount(count + 1) } >
               <AntDesign style={styles.plusbutton} name="pluscircleo" size={24} color="black" />
