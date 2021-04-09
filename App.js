@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function App() {
   return (
@@ -32,6 +33,14 @@ function Menu(){
           <Text style={styles.itemText}>もも肉</Text>
           <Text style={styles.itemText}>100円</Text>
           <Text style={styles.itemText}>個数</Text>
+          <View style={styles.button}>
+            <TouchableOpacity>
+              <AntDesign style={styles.plusbutton} name="pluscircleo" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AntDesign name="minuscircleo" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -75,12 +84,15 @@ const styles = StyleSheet.create({
   },
   itemRight: {
     flex: 2,
-    backgroundColor: 'red',
   },
   itemText: {
     flex: 1,
     fontSize: 22,
     alignItems: 'center',
+  },
+  button:{
+    flex: 1,
+    flexDirection: 'row',
   },
   safeArea: {
     flex: 1,
@@ -90,5 +102,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 10,
   },
-
 });
