@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -25,6 +25,8 @@ function AppBar(){
 }
 
 function Menu(){
+  const [count, setCount] = useState(0)
+
   return(
     <View style={styles.menu}>
       <View style={styles.items}>
@@ -33,11 +35,12 @@ function Menu(){
           <Text style={styles.itemText}>もも肉</Text>
           <Text style={styles.itemText}>100円</Text>
           <Text style={styles.itemText}>個数</Text>
+          <Text style={styles.itemText}>{count}</Text>
           <View style={styles.button}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={ () => setCount(count + 1) } >
               <AntDesign style={styles.plusbutton} name="pluscircleo" size={24} color="black" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={  () => setCount(count - 1) } >
               <AntDesign name="minuscircleo" size={24} color="black" />
             </TouchableOpacity>
           </View>
