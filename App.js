@@ -94,7 +94,7 @@ function Sum(props){
   const { sum } = props
   return (
     <View>
-      <Text>{ sum }</Text>
+      <Text style={ styles.sum }>合計金額: { sum }円</Text>
     </View>
   )
 }
@@ -154,4 +154,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 10,
   },
+  sum: {
+    fontSize: 30,
+  }
 });
