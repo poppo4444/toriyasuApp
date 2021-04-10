@@ -2,13 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import negima from './negima.jpeg';
+import momo from './momo.jpeg';
+import butabara from './butabara.jpeg';
 
 export default function App() {
   const [sum, setSum] = useState(0)
   const data = {
-    1: ['ねぎま', '120', require('./negima.jpeg')],
-    2: ['もも肉', '110', require('./momo.jpeg')],
-    3: ['豚バラ', '150', require('./butabara.jpeg')],
+    1: ['ねぎま', '120', negima],
+    2: ['もも肉', '110', momo],
+    3: ['豚バラ', '150', butabara],
   }
   return (
     <SafeAreaView style={styles.container}>
