@@ -68,6 +68,8 @@ function Item(props){
   }
 
   const setRemoveCount = () => {
+    if(count == 0){ return false }
+
     setCount(count - 1)
     setSum(sum - +price)
   }
