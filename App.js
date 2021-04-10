@@ -14,9 +14,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <AppBar />
       { Object.keys(data).map((key, value) => <Menu index={key} item={data[key][0]} price={data[key][1]} image={data[key][2]} setSum={setSum} sum={sum}/>) }
-      <View>
-        <Text>{sum}</Text>
-      </View>
+      <Sum sum={ sum } />
       <StatusBar style="light" />
     </SafeAreaView>
   );
@@ -88,6 +86,15 @@ function Item(props){
           <AntDesign name="minuscircleo" size={24} color="black" />
         </TouchableOpacity>
       </View>
+    </View>
+  )
+}
+
+function Sum(props){
+  const { sum } = props
+  return (
+    <View>
+      <Text>{ sum }</Text>
     </View>
   )
 }
