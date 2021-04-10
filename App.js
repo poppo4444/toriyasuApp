@@ -4,17 +4,19 @@ import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'r
 import { AntDesign } from '@expo/vector-icons';
 
 export default function App() {
-
+  const [sum, setSum] = useState(0)
   const data = {
     1: ['ねぎま', '120', require('./negima.jpeg')],
-    2: ['もも', '110', require('./momo.jpeg')],
+    2: ['もも肉', '110', require('./momo.jpeg')],
     3: ['豚バラ', '150', require('./butabara.jpeg')],
   }
   return (
     <SafeAreaView style={styles.container}>
       <AppBar />
-      { Object.keys(data).map((key, value) => <Menu index={key} item={data[key][0]} price={data[key][1]} image={data[key][2]} />) }
-      <Sum />
+      { Object.keys(data).map((key, value) => <Menu index={key} item={data[key][0]} price={data[key][1]} image={data[key][2]} setSum={setSum} sum={sum}/>) }
+      <View>
+        <Text>{sum}</Text>
+      </View>
       <StatusBar style="light" />
     </SafeAreaView>
   );
@@ -37,14 +39,15 @@ function Menu(props){
     item,
     price,
     image,
+    sum,
+    setSum,
   } = props
-  const aaa = './momo.jpeg'
-  console.log(image)
+
   return(
     <View style={styles.menu}>
       <View style={styles.items}>
         <Image style={styles.itemImage} source={image}></Image>
-        <Item index={index} item={item} price={price} />
+        <Item index={index} item={item} price={price} setSum={setSum} sum={sum} />
       </View>
     </View>
   )
@@ -52,28 +55,39 @@ function Menu(props){
 
 function Item(props){
   const [count, setCount] = useState(0)
+
   const {
     index,
     item,
     price,
+    setSum,
+    sum,
   } = props
+
+  const setAddCount = () => {
+    setCount(count + 1)
+    setSum(sum + +price)
+  }
+
+  const setRemoveCount = () => {
+    setCount(count - 1)
+    setSum(sum - +price)
+  }
+
   return(
-    <View style={styles.itemRight}>
-      <Text style={styles.itemText}>{ item }</Text>
-      <Text style={styles.itemText}>{ price }円</Text>
-      <Text style={styles.itemText}>個数: { count }個</Text>
-      <Text style={styles.itemText}>金額: { count * price }円</Text>
-      <View style={styles.button}>
-        <TouchableOpacity onPress={ () => setCount(count + 1) } >
+    <View style={ styles.itemRight }>
+      <Text style={ styles.itemText }>{ item }</Text>
+      <Text style={ styles.itemText }>{ price }円</Text>
+      <Text style={ styles.itemText }>個数: { count }個</Text>
+      <Text style={ styles.itemText }>金額: { count * price }円</Text>
+      <View style={ styles.button }>
+        <TouchableOpacity onPress={ setAddCount } >
           <AntDesign style={styles.plusbutton} name="pluscircleo" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={ () => setCount(count - 1) } >
+        <TouchableOpacity onPress={ setRemoveCount } >
           <AntDesign name="minuscircleo" size={24} color="black" />
         </TouchableOpacity>
       </View>
-    </View>
-  )
-}
     </View>
   )
 }
